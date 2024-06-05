@@ -3,27 +3,30 @@ import 'package:todo/src/features/todo_overview/domain/todo.dart';
 
 class MockDatabase implements DatabaseRepository {
   // Liste an Todos erstellen
-  List<Todo> todos = [];
+  List<Todo> todos = [Todo(title: 'Beispiel', isDone: false)];
 
   // Hier unten mit der Todo Liste arbeiten
   @override
-  void addTodo(Todo todo) {
+  Future<void> addTodo(Todo todo) async {
+    await Future.delayed(const Duration(seconds: 2));
     todos.add(todo);
   }
 
   @override
-  List<Todo> getTodos() {
+  Future<List<Todo>> getTodos() async {
+    await Future.delayed(const Duration(seconds: 2));
     return todos;
   }
 
   @override
-  void removeTodo(Todo todo) {
+  Future<void> removeTodo(Todo todo) async {
+    await Future.delayed(const Duration(seconds: 2));
     todos.remove(todo);
   }
 
   @override
-  void updateTodo(Todo todo, bool isDone) {
-    // TODO: implement updateTodo
+  Future<void> updateTodo(Todo todo, bool isDone) async {
+    await Future.delayed(const Duration(seconds: 2));
     todo.isDone = isDone;
   }
 }
